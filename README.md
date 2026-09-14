@@ -14,4 +14,4 @@ project halaman web statis untuk aplikasi Todo List, dibuat menggunakan HTML dan
 - Desain antarmuka sudah responsif, jadi tetap rapi saat dibuka di layar desktop maupun mobile.
 - Menggunakan data dummy statis untuk list Todo-nya.
 
-https://wallaweh.github.io/5025251093_ToDo-App/
+https://if-pemrograman-web-a.github.io/5025251093_ToDo-App/
