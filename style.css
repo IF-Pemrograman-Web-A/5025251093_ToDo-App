@@ -49,7 +49,6 @@ header h1 {
     flex: 1;
 }
 
-/* Layout Panel */
 .task-board {
     flex: 1.5;
     background: #1e293b;
@@ -106,9 +105,24 @@ input:focus, textarea:focus { border-color: #38bdf8; }
 .task-card.completed h3 { text-decoration: line-through; color: #64748b; }
 
 .task-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
-.task-header input[type="checkbox"] { transform: scale(1.3); margin-top: 0.3rem; cursor: pointer; }
-.task-header .info { flex: 1; }
-.task-header h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+
+.task-header input[type="checkbox"] { 
+    width: 20px !important; 
+    height: 20px; 
+    margin-top: 0.2rem; 
+    cursor: pointer; 
+    flex-shrink: 0; 
+}
+.task-header .info { 
+    flex: 1; 
+    text-align: left;
+}
+.task-header h3 { 
+    font-size: 1.1rem; 
+    margin-bottom: 0.3rem; 
+    color: #f8fafc;
+}
+
 .task-dates { font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem; }
 .task-desc p { font-size: 0.85rem; color: #cbd5e1; background: #1e293b; padding: 0.8rem; border-radius: 6px; }
 
@@ -131,3 +145,5 @@ body.light-mode input, body.light-mode textarea { background: #f8fafc; color: #1
 body.light-mode .task-card { background: #f1f5f9; border-color: #e2e8f0; }
 body.light-mode .task-desc p { background: #e2e8f0; color: #334155; }
 body.light-mode footer { background-color: #ffffff; border-top: 1px solid #e2e8f0; color: #64748b; }
+
+body.light-mode .task-header h3 { color: #1e293b; }
