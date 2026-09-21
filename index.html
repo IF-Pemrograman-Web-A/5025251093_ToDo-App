@@ -3,104 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
+    <title>Dynamic Task Manager</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <h1>[My Todo List Gweh]</h1>
+        <button id="theme-toggle" class="btn-theme">Beralih ke Light Mode</button>
     </header>
 
     <div class="layout-wrapper">
 
         <main class="task-board">
-            <h2>Todo List</h2>
-            
-            <!-- Tugas 1 -->
-            <div class="task-card">
-                <div class="task-header">
-                    <input type="checkbox" id="task1">
-                    <label for="task1">
-                        <h3>setup jarkom</h3>
-                        <div class="task-dates">
-                            <span>Mulai: 14 Sep 2026</span> | <span class="text-urgent">Deadline: 17 Sep 2026</span>
-                        </div>
-                        <span class="badge state-ongoing">On Going</span>
-                    </label>
-                </div>
-                <div class="task-desc">
-                    <p>setup buat praktikum nanti</p>
-                </div>
-            </div>
+            <h2>Active List</h2>
 
-            <!--Tugas 2 -->
-            <div class="task-card">
-                <div class="task-header">
-                    <input type="checkbox" id="task2">
-                    <label for="task2">
-                        <h3>tugas teori graf</h3>
-                        <div class="task-dates">
-                            <span>Mulai: 15 Sep 2026</span> | <span class="text-urgent">Deadline: 18 Sep 2026</span>
-                        </div>
-                        <span class="badge state-ongoing">On Going</span>
-                    </label>
-                </div>
-                <div class="task-desc">
-                    <p>kerjain bareng zadel</p>
-                </div>
-            </div>
-
-            <!-- Tugas 3 (Selesai) -->
-            <div class="task-card completed-card">
-                <div class="task-header">
-                    <input type="checkbox" id="task3" checked>
-                    <label for="task3" class="done">
-                        <h3>rapihin kamar</h3>
-                        <div class="task-dates">
-                            <span>Mulai: 10 Sep 2026</span> | <span>Deadline: 11 Sep 2026</span>
-                        </div>
-                        <span class="badge state-done">Completed</span>
-                    </label>
-                </div>
-                <div class="task-desc">
-                    <p>sekali sekali...</p>
-                </div>
-            </div>
-
+            <div id="task-container"></div>
         </main>
 
         <aside class="control-panel">
             <section class="add-task">
                 <h2>Deploy New Task</h2>
-                <form>
+                <form id="task-form">
                     <div class="input-group">
                         <label>Task Name</label>
-                        <input type="text" placeholder="Nama tugas..." required>
+                        <input type="text" id="task-name" placeholder="Nama tugas..." required>
                     </div>
                     <div class="input-group split">
                         <div>
                             <label>Start Date</label>
-                            <input type="date" required>
+                            <input type="date" id="start-date" required>
                         </div>
                         <div>
                             <label>Deadline</label>
-                            <input type="date" required>
+                            <input type="date" id="deadline" required>
                         </div>
                     </div>
                     <div class="input-group">
                         <label>Description</label>
-                        <textarea placeholder="Detail operasional..." rows="3"></textarea>
+                        <textarea id="task-desc" placeholder="Detail operasional..." rows="3"></textarea>
                     </div>
-                    <button type="button" class="btn-execute">Add Task</button>
+                    <button type="submit" class="btn-execute">Add Task</button>
                 </form>
             </section>
         </aside>
     </div>
 
     <footer>
-        <p>&copy; Muhammad Hanif Musyafa (5025251093)</p>
+        <p>&copy; 2026 IF Pemrograman Web - Muhammad Hanif Musyafa (5025251093)</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
