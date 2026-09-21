@@ -11,6 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header {
@@ -18,12 +19,24 @@ header {
     border-bottom: 2px solid #38bdf8;
     text-align: center;
     padding: 1.5rem;
+    position: relative;
 }
 
 header h1 {
     font-size: 1.6rem;
     color: #38bdf8;
-    letter-spacing: 2px;
+}
+
+.btn-theme {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: #334155;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .layout-wrapper {
@@ -36,6 +49,7 @@ header h1 {
     flex: 1;
 }
 
+/* Layout Panel */
 .task-board {
     flex: 1.5;
     background: #1e293b;
@@ -44,100 +58,6 @@ header h1 {
     border: 1px solid #334155;
 }
 
-.task-board h2 {
-    color: #f8fafc;
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
-    border-bottom: 1px dashed #475569;
-    padding-bottom: 0.5rem;
-}
-
-.task-card {
-    background: #0f172a;
-    border: 1px solid #334155;
-    border-radius: 8px;
-    margin-bottom: 1.2rem;
-    padding: 1.2rem;
-    border-left: 4px solid #38bdf8;
-}
-
-.task-card.completed-card {
-    border-left-color: #10b981;
-    opacity: 0.75;
-}
-
-.task-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-}
-
-.task-header input[type="checkbox"] {
-    transform: scale(1.3);
-    margin-top: 0.3rem;
-    cursor: pointer;
-}
-
-.task-header label {
-    flex: 1;
-    cursor: pointer;
-}
-
-.task-header h3 {
-    font-size: 1.1rem;
-    color: #f8fafc;
-    margin-bottom: 0.3rem;
-}
-
-.task-dates {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    margin-bottom: 0.6rem;
-}
-
-.text-urgent {
-    color: #ef4444;
-    font-weight: bold;
-}
-
-.badge {
-    display: inline-block;
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 20px;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.state-ongoing {
-    background-color: #f59e0b;
-    color: #fff;
-}
-
-.state-done {
-    background-color: #10b981;
-    color: #fff;
-}
-
-.done h3 {
-    text-decoration: line-through;
-    color: #64748b;
-}
-
-/* Deskripsi Kecil */
-.task-desc p {
-    font-size: 0.85rem;
-    color: #cbd5e1;
-    line-height: 1.5;
-    background: #1e293b;
-    padding: 0.8rem;
-    border-radius: 6px;
-    margin-top: 0.8rem;
-    margin-left: 2.3rem; /* Sejajar dengan teks judul */
-    border: 1px solid #334155;
-}
-
-/* Panel Kanan: Aside (Form) */
 .control-panel {
     flex: 1;
 }
@@ -151,35 +71,14 @@ header h1 {
     top: 2rem;
 }
 
-.add-task h2 {
-    color: #f8fafc;
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
-    border-bottom: 1px dashed #475569;
-    padding-bottom: 0.5rem;
-}
+h2 { margin-bottom: 1.5rem; border-bottom: 1px dashed #475569; padding-bottom: 0.5rem; }
 
-.input-group {
-    margin-bottom: 1.2rem;
-}
+.input-group { margin-bottom: 1.2rem; }
+.input-group.split { display: flex; gap: 1rem; }
+.input-group.split > div { flex: 1; }
+label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.4rem; }
 
-.input-group.split {
-    display: flex;
-    gap: 1rem;
-}
-
-.input-group.split > div {
-    flex: 1;
-}
-
-.input-group label {
-    display: block;
-    font-size: 0.85rem;
-    color: #94a3b8;
-    margin-bottom: 0.4rem;
-}
-
-.input-group input, .input-group textarea {
+input, textarea {
     width: 100%;
     background: #0f172a;
     border: 1px solid #475569;
@@ -188,42 +87,47 @@ header h1 {
     border-radius: 6px;
     outline: none;
 }
-
-.input-group input:focus, .input-group textarea:focus {
-    border-color: #38bdf8;
-}
+input:focus, textarea:focus { border-color: #38bdf8; }
 
 .btn-execute {
-    width: 100%;
-    padding: 0.8rem;
-    background-color: #38bdf8;
-    color: #0f172a;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    width: 100%; padding: 0.8rem; background-color: #38bdf8; color: #0f172a;
+    border: none; border-radius: 6px; font-weight: bold; cursor: pointer;
 }
 
-.btn-execute:hover {
-    background-color: #0ea5e9;
-}
-
-footer {
-    background-color: #020617;
-    color: #64748b;
-    text-align: center;
+.task-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
     padding: 1.2rem;
-    font-size: 0.8rem;
-    margin-top: auto;
-    border-top: 1px solid #1e293b;
+    border-left: 4px solid #38bdf8;
 }
+.task-card.completed { border-left-color: #10b981; opacity: 0.7; }
+.task-card.completed h3 { text-decoration: line-through; color: #64748b; }
 
-@media (max-width: 850px) {
-    .layout-wrapper {
-        flex-direction: column;
-    }
-    .task-desc p {
-        margin-left: 0;
-    }
+.task-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+.task-header input[type="checkbox"] { transform: scale(1.3); margin-top: 0.3rem; cursor: pointer; }
+.task-header .info { flex: 1; }
+.task-header h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+.task-dates { font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.5rem; }
+.task-desc p { font-size: 0.85rem; color: #cbd5e1; background: #1e293b; padding: 0.8rem; border-radius: 6px; }
+
+.action-buttons { margin-top: 1rem; display: flex; gap: 0.5rem; }
+.btn-edit, .btn-delete {
+    padding: 0.4rem 0.8rem; border: none; border-radius: 4px; color: white; cursor: pointer; font-size: 0.8rem;
 }
+.btn-edit { background-color: #f59e0b; }
+.btn-delete { background-color: #ef4444; }
+
+footer { background-color: #020617; text-align: center; padding: 1.2rem; font-size: 0.8rem; margin-top: auto; }
+
+body.light-mode { background-color: #f8fafc; color: #1e293b; }
+body.light-mode header { background-color: #ffffff; border-bottom-color: #0284c7; }
+body.light-mode header h1 { color: #0284c7; }
+body.light-mode .btn-theme { background-color: #e2e8f0; color: #1e293b; }
+body.light-mode .task-board, body.light-mode .add-task { background: #ffffff; border-color: #cbd5e1; }
+body.light-mode h2 { color: #0f172a; border-bottom-color: #cbd5e1; }
+body.light-mode input, body.light-mode textarea { background: #f8fafc; color: #1e293b; border-color: #cbd5e1; }
+body.light-mode .task-card { background: #f1f5f9; border-color: #e2e8f0; }
+body.light-mode .task-desc p { background: #e2e8f0; color: #334155; }
+body.light-mode footer { background-color: #ffffff; border-top: 1px solid #e2e8f0; color: #64748b; }
