@@ -1,22 +1,3 @@
-let tasks = [
-    {
-        id: 1,
-        name: "Praktikum FUSE",
-        start: "2026-09-14",
-        deadline: "2026-09-15",
-        desc: "Membuat custom FUSE filesystem menggunakan bahasa C.",
-        completed: false
-    },
-    {
-        id: 2,
-        name: "Revisi Layout Cendol Susu",
-        start: "2026-09-16",
-        deadline: "2026-09-18",
-        desc: "Bikin revisi logo di Canva.",
-        completed: false
-    }
-];
-
 const taskContainer = document.getElementById('task-container');
 const taskForm = document.getElementById('task-form');
 const themeToggle = document.getElementById('theme-toggle');
