@@ -1,3 +1,5 @@
+let tasks = [];
+
 const taskContainer = document.getElementById('task-container');
 const taskForm = document.getElementById('task-form');
 const themeToggle = document.getElementById('theme-toggle');
