@@ -133,6 +133,30 @@ input:focus, textarea:focus { border-color: #38bdf8; }
 .btn-edit { background-color: #f59e0b; }
 .btn-delete { background-color: #ef4444; }
 
+/* --- Aksesibilitas: Indikator Fokus Keyboard --- */
+input:focus-visible, textarea:focus-visible, button:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 2px;
+}
+
+.task-image-preview {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-top: 10px;
+    border: 1px solid #475569;
+}
+
+input[type="file"] {
+    background: transparent;
+    padding: 0.4rem 0;
+    border: none;
+    color: #e2e8f0;
+}
+body.light-mode input[type="file"] {
+    color: #1e293b;
+}
+
 footer { background-color: #020617; text-align: center; padding: 1.2rem; font-size: 0.8rem; margin-top: auto; }
 
 body.light-mode { background-color: #f8fafc; color: #1e293b; }
