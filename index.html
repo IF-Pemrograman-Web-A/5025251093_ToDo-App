@@ -3,47 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Task Manager</title>
+    <title>My Todo List Gweh</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <h1>[My Todo List Gweh]</h1>
-        <button id="theme-toggle" class="btn-theme">Beralih ke Light Mode</button>
+        <button id="theme-toggle" class="btn-theme" aria-label="Ganti tema warna">Beralih ke Light Mode</button>
     </header>
 
     <div class="layout-wrapper">
-
-        <main class="task-board">
-            <h2>Active List</h2>
-
-            <div id="task-container"></div>
+        <main class="task-board" aria-labelledby="board-title">
+            <h2 id="board-title">Active List</h2>
+            <div id="task-container" role="list"></div>
         </main>
 
-        <aside class="control-panel">
+        <aside class="control-panel" aria-labelledby="form-title">
             <section class="add-task">
-                <h2>Deploy New Task</h2>
+                <h2 id="form-title">Deploy New Task</h2>
                 <form id="task-form">
                     <div class="input-group">
-                        <label>Task Name</label>
+                        <label for="task-name">Task Name</label>
                         <input type="text" id="task-name" placeholder="Nama tugas..." required>
                     </div>
                     <div class="input-group split">
                         <div>
-                            <label>Start Date</label>
+                            <label for="start-date">Start Date</label>
                             <input type="date" id="start-date" required>
                         </div>
                         <div>
-                            <label>Deadline</label>
+                            <label for="deadline">Deadline</label>
                             <input type="date" id="deadline" required>
                         </div>
                     </div>
                     <div class="input-group">
-                        <label>Description</label>
+                        <label for="notif-time">Waktu Notifikasi</label>
+                        <input type="datetime-local" id="notif-time">
+                    </div>
+                    <div class="input-group">
+                        <label for="task-image">Lampiran Gambar (Media Capture)</label>
+                        <input type="file" id="task-image" accept="image/*" capture="environment">
+                    </div>
+                    <div class="input-group">
+                        <label for="task-desc">Description</label>
                         <textarea id="task-desc" placeholder="Detail operasional..." rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn-execute">Add Task</button>
+                    <button type="submit" class="btn-execute" aria-label="Tambah tugas baru">Add Task</button>
                 </form>
             </section>
         </aside>
