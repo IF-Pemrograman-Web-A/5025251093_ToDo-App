@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$name', '$start', '$deadline', '$desc')";
     
     mysqli_query($conn, $sql);
-    header("Location: index.php");
+    header("Location: index.php"); // Balik ke halaman awal
     exit();
 }
 ?>
