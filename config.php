@@ -1,7 +1,7 @@
 <?php
 $server = "localhost";
 $user = "root";
-$password = ""; // Kosongkan kalau pakai XAMPP bawaan
+$password = ""; 
 $database = "todo_db";
 
 $conn = mysqli_connect($server, $user, $password, $database);
