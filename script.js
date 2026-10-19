@@ -1,3 +1,4 @@
+// LocalStorage (User Preferences: Light/Dark Mode)
 const themeToggle = document.getElementById('theme-toggle');
 const savedTheme = localStorage.getItem('app-theme');
 
