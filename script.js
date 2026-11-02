@@ -18,3 +18,23 @@ themeToggle.addEventListener('click', function() {
         localStorage.setItem('app-theme', 'dark');
     }
 });
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(err => console.error(err));
+}
+
+let deferredPrompt;
+const installBtn = document.getElementById("install-button");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = "block";
+});
+
+installBtn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+    await deferredPrompt.prompt();
+    deferredPrompt = null;
+    installBtn.style.display = "none";
+});
