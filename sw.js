@@ -1,13 +1,18 @@
-const CACHE_NAME = "todo-cache-v1";
+const CACHE_NAME = "todo-cache-v3";
 const PRECACHE_ASSETS = [
-    "/offline.html",
-    "/style.css",
-    "/script.js"
+    "./offline.html",
+    "./style.css",
+    "./script.js"
 ];
 
 self.addEventListener("install", event => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE_ASSETS))
+        caches.open(CACHE_NAME).then(cache => {
+            console.log("Proses caching dimulai...");
+            return cache.addAll(PRECACHE_ASSETS);
+        }).catch(err => {
+            console.error("Gagal caching! Ada file yang tidak ditemukan:", err);
+        })
     );
 });
 
@@ -25,7 +30,7 @@ self.addEventListener("fetch", event => {
     event.respondWith(
         fetch(event.request).catch(() => {
             return caches.match(event.request).then(response => {
-                return response || caches.match("/offline.html");
+                return response || caches.match("./offline.html");
             });
         })
     );
