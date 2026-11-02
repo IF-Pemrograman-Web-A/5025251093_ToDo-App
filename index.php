@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Todo List Gweh</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
     <header>
         <h1>[My Todo List Gweh]</h1>
         <button id="theme-toggle" class="btn-theme" aria-label="Ganti tema warna">Beralih ke Light Mode</button>
+        <button id="install-button" class="btn-theme" style="right: 12rem; display: none;">Install App</button>
     </header>
 
     <div class="layout-wrapper">
