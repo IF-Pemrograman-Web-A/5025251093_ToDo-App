@@ -1,53 +1,51 @@
-# 5025251093_ToDo-App
+# [E06] The Endpoint of Portals — RESTful API Todo App
 
-**Identitas**
-- Nama: Muhammad Hanif Musyafa
-- NRP: 5025251093
-- Kelas: Pemrograman Web - A
+Aplikasi manajemen tugas (Todo App) berbasis web yang telah dimigrasi dari arsitektur PHP klasik menjadi **RESTful API** dengan format pertukaran data **JSON** dan autentikasi **API Key**.
 
-**deskripsi**
+## Autentikasi
+Seluruh *request* ke `api.php` wajib menyertakan *header* berikut:
+- `X-API-Key: todo-key-5025251093`
+- `Content-Type: application/json`
 
-project halaman web statis untuk aplikasi Todo List, dibuat menggunakan HTML dan CSS eksternal
+## Spesifikasi Endpoint
 
-- Menggunakan elemen semantik HTML (header, main, aside, dan footer).
-- Layout dibagi jadi dua panel (kiri untuk list tugas, kanan untuk detail/form) dengan memanfaatkan Flexbox.
-- Desain antarmuka sudah responsif, jadi tetap rapi saat dibuka di layar desktop maupun mobile.
-- Menggunakan data dummy statis untuk list Todo-nya.
+| Method | Endpoint | Deskripsi | Status Sukses | Status Error |
+| :--- | :--- | :--- | :--- | :--- |
+| `GET` | `/api.php` | Mengambil semua daftar tugas | `200 OK` | `401 Unauthorized` |
+| `GET` | `/api.php?id={id}` | Mengambil detail tugas berdasarkan ID | `200 OK` | `400`, `401`, `404` |
+| `POST` | `/api.php` | Menambahkan tugas baru | `201 Created` | `400`, `401` |
+| `PUT` | `/api.php?id={id}` | Memperbarui seluruh data tugas | `200 OK` | `400`, `401`, `404` |
+| `PATCH` | `/api.php?id={id}` | Memperbarui sebagian data / status selesai | `200 OK` | `400`, `401`, `404` |
+| `DELETE` | `/api.php?id={id}` | Menghapus tugas berdasarkan ID | `200 OK` | `400`, `401`, `404` |
 
-https://if-pemrograman-web-a.github.io/5025251093_ToDo-App/
+---
 
-**kondisi awal:**
-<img width="1919" height="863" alt="image" src="https://github.com/user-attachments/assets/ce7d3eb9-b0e1-4312-b353-c907b325fa1a" />
+## Dokumentasi Pengujian API
 
-**saat menambah task:**
-<img width="1919" height="862" alt="image" src="https://github.com/user-attachments/assets/3b84161b-42ba-44b1-9060-a14b57b12711" />
+### 1. Skenario Sukses (`200 OK` & `201 Created`)
 
-**saat mengedit deskripsi
-<img width="1919" height="756" alt="image" src="https://github.com/user-attachments/assets/1f1cc5e5-d2ff-44e1-aa46-c2d7ac4d9407" />
-<img width="1919" height="858" alt="image" src="https://github.com/user-attachments/assets/5b17587b-1750-4911-88fb-822129960f5e" />
+* **GET All Tasks (`200 OK`)**
+  ![GET 200](screenshots/get-200.png)
 
-**saat ceklis:**
-<img width="1919" height="931" alt="image" src="https://github.com/user-attachments/assets/e647b2e6-6d84-4953-85f3-4cee55149295" />
+* **POST Create Task (`201 Created`)**
+  ![POST 201](screenshots/post-201.png)
 
-**saat Delete:**
-<img width="1919" height="929" alt="image" src="https://github.com/user-attachments/assets/662dc836-225a-4df
+* **PUT Full Update (`200 OK`)**
+  ![PUT 200](screenshots/put-200.png)
 
-**saat light mode:**
-<img width="1919" height="927" alt="image" src="https://github.com/user-attachments/assets/578d3629-4d20-4168-97ce-83a9f8b0875a" />
+* **PATCH Partial Update (`200 OK`)**
+  ![PATCH 200](screenshots/patch-200.png)
 
-**phpmyadmin:**
-<img width="1919" height="512" alt="image" src="https://github.com/user-attachments/assets/23d5c312-d050-401a-a6bd-2083495555f0" />
+* **DELETE Task (`200 OK`)**
+  ![DELETE 200](screenshots/delete-200.png)
 
-## Bukti Pengerjaan [E05] The Offline Abyss
+### 2. Skenario Error & Autentikasi (`400`, `401`, `404`)
 
-**Web App Manifest**
-<img width="1334" height="679" alt="image" src="https://github.com/user-attachments/assets/d2655852-1413-4f74-aa7c-1c35546a77b6" />
-File `manifest.json` telah berhasil didaftarkan sehingga aplikasi memiliki identitas, ikon, dan tombol instal (PWA *installable*).
+* **Unauthorized — Tanpa API Key (`401 Unauthorized`)**
+  ![Error 401](screenshots/error-401.png)
 
-**Service Worker & Cache Storage**
-<img width="1077" height="372" alt="image" src="https://github.com/user-attachments/assets/63bd9782-ed8d-4065-b299-8cd99708410f" />
-*Service Worker* telah aktif dan menggunakan metode precaching untuk menyimpan aset inti ke dalam *Cache Storage* saat proses instalasi.
+* **Bad Request — Input JSON Kosong (`400 Bad Request`)**
+  ![Error 400](screenshots/error-400.png)
 
-**Pengujian Mode Offline**
-<img width="1919" height="931" alt="image" src="https://github.com/user-attachments/assets/2d48d3f2-d6ba-4c75-9ed4-cf289d887e02" />
-Pengujian *Network First* fallback. Saat kondisi jaringan dimatikan (*Offline*), aplikasi tidak *crash* atau memunculkan pesan error bawaan browser (dinosaurus), melainkan berhasil menampilkan halaman darurat `offline.html` yang ditarik dari *cache*.
+* **Not Found — ID Tidak Ditemukan (`404 Not Found`)**
+  ![Error 404](screenshots/error-404.png)
